@@ -4,6 +4,15 @@
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>
+  <button
+    class="btn btn-primary"
+    data-bs-target="#collapseTarget"
+    data-bs-toggle="collapse">
+    Bootstrap collapse
+  </button>
+  <div class="collapse py-2" id="collapseTarget">
+    This is the toggle-able content!
+  </div>
 </template>
 
 <style lang="scss">
