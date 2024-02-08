@@ -1,39 +1,17 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
-  <button
-    class="btn btn-primary"
-    data-bs-target="#collapseTarget"
-    data-bs-toggle="collapse">
-    Bootstrap collapse
-  </button>
-  <div class="collapse py-2" id="collapseTarget">
-    This is the toggle-able content!
+  <div class="text-white">
+    Hello
   </div>
 </template>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  height: 100vh;
+  font-family: Ubuntu Mono,monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(26,26,105,1) 35%, rgba(0,212,255,1) 100%);
 }
 </style>
