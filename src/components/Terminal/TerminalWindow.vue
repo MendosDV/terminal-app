@@ -50,56 +50,73 @@ export default {
       userInput: '',
       resultMessage: [],
       manCommand: [
-        { name: 'mickael', description: "Display the main information about Mickael"},
         { name: 'clear', description: '"Delete all displayed content' },
+        { name: 'mickael', description: "Display the main information about Mickael"},
         { name: 'stack', description: "List Mickael's technical skills" },
         { name: 'cv', description: 'Download Mickael\'s CV' },
         { name: 'why', description: 'Display why you have to hire Mickael' },
-        { name: 'coucou', description: 'afficher "Coucou c\'est moi"' },
-        { description: 'Because time is money, you can use TAB key to autocomplete commands' },
-        { description: 'To provide you with a better experience, you can find your previous orders using the arrows.' },
+        { name: 'like', description: 'Will send me a like for this project automatically' },
       ],
-      mickaelCommand: '{"id":1,"name":"A green door","price":12.50,"tags":["home","green"]}',
-      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man'],
+      stackCommand: [
+        { name: 'Backend', description: "Ruby on Rails, Node.js, actually learning C#." },
+        { name: 'Frontend', description: 'HTML, CSS, React, Vue.js, Bootstrap, Tailwind.' },
+        { name: 'Database', description: "MySQL, PostgreSQL, MongoDB." },
+      ],
+      mickaelCommand: '{"first_name":"Mickael","last_name":"Riss","age":25,"email":"mickaelriss6@gmail.com","website":"www.mickael-riss.com","job":"Software Developer","city":"Montréal"}',
+      whyCommand: "Parce que je possède une solide expérience dans le développement logiciel, avec des compétences approfondies dans les technologies telles que JavaScript, React, et Node.js. En plus de mes compétences techniques, j'apporte une attitude positive et une passion pour résoudre des problèmes complexes. Ma capacité à collaborer efficacement au sein d'une équipe et à communiquer clairement fait de moi un membre précieux de tout projet.",
+      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'like'],
     };
   },
 
   methods: {
+    handleDocumentClick(event) {
+      if (!this.$refs.commandInput.contains(event.target)) {
+        this.$refs.commandInput.focus();
+      }
+    },
+
     isJSON(str) {
       try {
         JSON.parse(str);
-        true;
+        return true;
       } catch (e) {
-        false;
+        return false;
       }
+    },
+
+    downloadCV() {
+      const link = document.createElement('a');
+      link.href = '/CV_Mickael_Riss.pdf';
+      link.download = 'CV_Mickaël_Riss.pdf';
+      link.click();
     },
 
     handleEnter() {
       const command = this.userInput.toLowerCase();
       const mickaelJson = JSON.stringify(JSON.parse(this.mickaelCommand), null, 2);
-      console.log(typeof mickaelJson);
 
       switch (command) {
         case 'mickael':
           this.resultMessage.push(['mickael', mickaelJson]);
           break;
         case 'stack':
-          this.resultMessage.push(['stack', "Coucou c'est moi"]);
+          this.resultMessage.push(['stack', this.stackCommand]);
           break;
         case 'cv':
-          this.resultMessage.push(['cv', "Coucou c'est moi"]);
+          this.downloadCV();
+          this.resultMessage.push(['cv', 'Downloading CV...']);
           break;
         case 'why':
-          this.resultMessage.push(['why', "Coucou c'est moi"]);
+          this.resultMessage.push(['why', this.whyCommand]);
           break;
         case 'clear':
           this.resultMessage = [];
           break;
-        case 'coucou':
-          this.resultMessage.push(['coucou', "Coucou c'est moi"]);
-          break;
         case 'man':
           this.resultMessage.push(['man', this.manCommand]);
+          break;
+        case 'like':
+          this.resultMessage.push(['like', this.manCommand]);
           break;
         default:
           this.resultMessage.push([this.userInput]);
@@ -108,7 +125,6 @@ export default {
 
       this.userInput = '';
     },
-    
     handleTab(event) {
       event.preventDefault();
       const userInputLowerCase = this.userInput.toLowerCase();
@@ -122,6 +138,7 @@ export default {
 
   mounted() {
     this.$refs.commandInput.focus();
+    document.addEventListener('click', this.handleDocumentClick);
   },
 };
 </script>

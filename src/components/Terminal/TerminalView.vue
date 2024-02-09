@@ -41,7 +41,7 @@ export default {
     toggleTerminal() {
       this.showTerminal = !this.showTerminal;
     }
-  }
+  },
 };
 </script>
 

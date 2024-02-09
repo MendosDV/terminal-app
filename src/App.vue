@@ -29,7 +29,11 @@ export default {
 
   @media (max-width: 768px) {
     p {
-      font-size: 0.8rem;
+      font-size: 0.8rem !important;
     };
+
+    input {
+      font-size: 0.8rem !important;
+    }
   }
 </style>
