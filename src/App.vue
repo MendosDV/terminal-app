@@ -1,37 +1,15 @@
 <template>
   <div class="container-md d-flex justify-content-center align-items-center h-100">
     <TerminalApp />
-    <!-- <div  :color-scheme="isDark ? 'dark' : 'light'">
-      <p>Cliquez sur le bouton pour changer le thème : {{ isDark ? 'Dark' : 'Light' }}</p>
-        <button @click="toggleDark()">
-          Is Dark: {{ isDark }}
-        </button>
-    </div> -->
   </div>
 </template>
 
 <script>
-import { useDark, useToggle } from '@vueuse/core'
 import TerminalApp from './components/Terminal/TerminalView.vue'
 
 export default {
   name: 'App',
   components: { TerminalApp },
-  setup() {
-    const isDark = useDark({
-      selector: 'body',
-      attribute: 'color-scheme',
-      valueDark: 'dark',
-      valueLight: 'light',
-    });
-
-    const toggleDark = useToggle(isDark);
-
-    return {
-      isDark,
-      toggleDark,
-    };
-  },
 }
 </script>
 
@@ -42,7 +20,16 @@ export default {
     font-family: Ubuntu Mono,monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(26,26,105,1) 35%, rgba(0,212,255,1) 100%);
+    background-image: linear-gradient(to right, #393a3c, #2e3c58, #1f3d74, #0f3c8e, #1637a6);
+  }
+
+  .rc-color {
+    color: #DD0700;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 0.8rem;
+    };
   }
 </style>

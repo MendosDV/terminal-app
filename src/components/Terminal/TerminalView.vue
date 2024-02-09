@@ -8,7 +8,7 @@
     </div>
     <div class="terminal-body px-2 px-md-4">
       <div class="text-presentation">
-        <pre id="ascii" role="img" aria-label="ASCII Radio Canada" class="mb-2 text-success">
+        <pre id="ascii" role="img" aria-label="ASCII Radio Canada" class="mb-2 rc-color">
 __        __   _                             ____           _ _          ____                      _
 \ \      / /__| | ___ ___  _ __ ___   ___   |  _ \ __ _  __| (_) ___    / ___|__ _ _ __   __ _  __| | __ _
  \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \  | |_) / _` |/ _` | |/ _ \  | |   / _` | '_ \ / _` |/ _` |/ _` |
@@ -16,7 +16,7 @@ __        __   _                             ____           _ _          ____   
    \_/\_/ \___|_|\___\___/|_| |_| |_|\___|  |_| \_\__,_|\__,_|_|\___/   \____\__,_|_| |_|\__,_|\__,_|\__,_|
         </pre>
         <div>
-          <p class="fw-bold">Merci de venir consulter ce projet. Pour connaître la liste des commandes, tapez <span class="text-success">man</span>. Après chaque commande, vous pouvez la valider en appuyant sur <span class="text-success fst-italic">Enter</span>. Vous pouvez aussi appuyer sur <span class="text-success fst-italic">Tab</span> pour completer une commande.</p>
+          <p class="fw-bold">Merci de venir consulter ce projet. Pour connaître la liste des commandes, tapez <span class="rc-color">man</span>. Après chaque commande, vous pouvez la valider en appuyant sur <span class="rc-color fst-italic">Enter</span>. Vous pouvez aussi appuyer sur <span class="rc-color fst-italic">Tab</span> pour completer une commande.</p>
         </div>
       </div>
       <TerminalWindow />
