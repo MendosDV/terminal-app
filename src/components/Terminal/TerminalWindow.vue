@@ -55,7 +55,7 @@ export default {
         { name: 'stack', description: "List Mickael's technical skills" },
         { name: 'cv', description: 'Download Mickael\'s CV' },
         { name: 'why', description: 'Display why you have to hire Mickael' },
-        { name: 'like', description: 'Will send me a like for this project automatically' },
+        { name: 'email', description: 'If you liked this initiative, let me know by sending an email 😊' },
       ],
       stackCommand: [
         { name: 'Backend', description: "Ruby on Rails, Node.js, actually learning C#." },
@@ -63,14 +63,41 @@ export default {
         { name: 'Database', description: "MySQL, PostgreSQL, MongoDB." },
       ],
       mickaelCommand: '{"first_name":"Mickael","last_name":"Riss","age":25,"email":"mickaelriss6@gmail.com","website":"www.mickael-riss.com","job":"Software Developer","city":"Montréal"}',
-      whyCommand: "Parce que je possède une solide expérience dans le développement logiciel, avec des compétences approfondies dans les technologies telles que JavaScript, React, et Node.js. En plus de mes compétences techniques, j'apporte une attitude positive et une passion pour résoudre des problèmes complexes. Ma capacité à collaborer efficacement au sein d'une équipe et à communiquer clairement fait de moi un membre précieux de tout projet.",
-      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'like'],
+      whyCommand: `
+      {
+        "Raisons_de_recruter_Mickael": [
+          {
+            "Compétences_techniques": [
+              "Maîtrise des technologies web modernes, dont JavaScript, React, et Node.js.",
+              "Expérience solide dans le développement frontend (HTML, CSS) et backend (Node.js, Ruby on Rails).",
+              "Connaissance approfondie des bases de données SQL (MySQL, PostgreSQL) et NoSQL (MongoDB).",
+              "Familiarité avec les frameworks populaires tels que Vue.js, Bootstrap, et Tailwind."
+            ]
+          },
+          {
+            "Adaptabilité_et_travail_en_équipe": [
+              "Excellentes habiletés de communication à l'oral et à l'écrit.",
+              "Maîtrise du français et de l'anglais, répondant ainsi aux exigences des deux langues officielles du Canada.",
+              "Aptitude démontrée pour le travail en équipe.",
+              "Bon esprit d'analyse et capacité à intégrer rapidement de nouveaux concepts, tout en respectant des délais restreints."
+            ]
+          },
+          {
+            "Veille_technologique_et_engagement_professionnel": [
+              "Aptitude à se tenir à jour avec les plus récents développements technologiques.",
+              "Capacité à suivre les tendances et les nouvelles approches en matière de développement et d'architecture.",
+              "Engagement professionnel en respectant les engagements vis-à-vis des exigences de projet et de support."
+            ]
+          }
+        ]
+      }`,
+      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'email'],
     };
   },
 
   methods: {
     handleDocumentClick(event) {
-      if (!this.$refs.commandInput.contains(event.target)) {
+      if (this.$refs.commandInput && !this.$refs.commandInput.contains(event.target)) {
         this.$refs.commandInput.focus();
       }
     },
@@ -91,9 +118,16 @@ export default {
       link.click();
     },
 
+    sendEmail() {
+      const link = document.createElement('a');
+      link.href = 'mailto:mickaelriss6@gmail';
+      link.click();
+    },
+
     handleEnter() {
       const command = this.userInput.toLowerCase();
       const mickaelJson = JSON.stringify(JSON.parse(this.mickaelCommand), null, 2);
+      const whyJson = JSON.stringify(JSON.parse(this.whyCommand), null, 2);
 
       switch (command) {
         case 'mickael':
@@ -104,10 +138,10 @@ export default {
           break;
         case 'cv':
           this.downloadCV();
-          this.resultMessage.push(['cv', 'Downloading CV...']);
+          this.resultMessage.push(['cv', 'Downloading CV... Done!']);
           break;
         case 'why':
-          this.resultMessage.push(['why', this.whyCommand]);
+          this.resultMessage.push(['why', whyJson]);
           break;
         case 'clear':
           this.resultMessage = [];
@@ -115,8 +149,9 @@ export default {
         case 'man':
           this.resultMessage.push(['man', this.manCommand]);
           break;
-        case 'like':
-          this.resultMessage.push(['like', this.manCommand]);
+        case 'email':
+          this.sendEmail();
+          this.resultMessage.push(['email', 'Thanks for sending an email! I\'ll get back to you as soon as possible.']);
           break;
         default:
           this.resultMessage.push([this.userInput]);
@@ -125,6 +160,7 @@ export default {
 
       this.userInput = '';
     },
+
     handleTab(event) {
       event.preventDefault();
       const userInputLowerCase = this.userInput.toLowerCase();

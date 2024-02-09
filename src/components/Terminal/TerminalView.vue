@@ -48,7 +48,7 @@ export default {
 <style lang="scss" scoped>
 .terminal {
   height: 68%;
-  background-color: #040405;
+  background-color: #040405d4;
   opacity: 0.9;
 
   .terminal-header {

@@ -20,7 +20,10 @@ export default {
     font-family: Ubuntu Mono,monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-image: linear-gradient(to right, #393a3c, #2e3c58, #1f3d74, #0f3c8e, #1637a6);
+    background: hsla(120, 6%, 90%, 1);
+    background: linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
   }
 
   .rc-color {
@@ -28,12 +31,8 @@ export default {
   }
 
   @media (max-width: 768px) {
-    p {
+    p, li, input, span, pre, div {
       font-size: 0.8rem !important;
     };
-
-    input {
-      font-size: 0.8rem !important;
-    }
   }
 </style>
