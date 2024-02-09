@@ -24,7 +24,14 @@
         Mickael ~$
         <span class="text-white">{{ message[0] }}</span>
       </p>
-      {{ message[1] }}
+      <div>
+        <div v-if="typeof message[1] === 'string' && isJSON(message[1])">
+          <pre>{{ message[1] }}</pre>
+        </div>
+        <div v-else>
+          {{ message[1] }}
+        </div>
+      </div>
     </div>
   </div>
 
@@ -58,12 +65,23 @@ export default {
   },
 
   methods: {
+    isJSON(str) {
+      try {
+        JSON.parse(str);
+        true;
+      } catch (e) {
+        false;
+      }
+    },
+
     handleEnter() {
       const command = this.userInput.toLowerCase();
+      const mickaelJson = JSON.stringify(JSON.parse(this.mickaelCommand), null, 2);
+      console.log(typeof mickaelJson);
 
       switch (command) {
         case 'mickael':
-          this.resultMessage.push(['mickael', this.mickaelCommand]);
+          this.resultMessage.push(['mickael', mickaelJson]);
           break;
         case 'stack':
           this.resultMessage.push(['stack', "Coucou c'est moi"]);
@@ -90,6 +108,7 @@ export default {
 
       this.userInput = '';
     },
+    
     handleTab(event) {
       event.preventDefault();
       const userInputLowerCase = this.userInput.toLowerCase();
