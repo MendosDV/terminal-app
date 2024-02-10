@@ -16,7 +16,7 @@ __        __   _                             ____           _ _          ____   
    \_/\_/ \___|_|\___\___/|_| |_| |_|\___|  |_| \_\__,_|\__,_|_|\___/   \____\__,_|_| |_|\__,_|\__,_|\__,_|
         </pre>
         <div>
-          <p class="fw-bold">Merci de venir consulter ce projet. Pour connaître la liste des commandes, tapez <span class="rc-color">man</span>. Après chaque commande, vous pouvez la valider en appuyant sur <span class="rc-color fst-italic">Enter</span>. Vous pouvez aussi appuyer sur <span class="rc-color fst-italic">Tab</span> pour completer une commande.</p>
+          <p class="fw-bold">Thank you for checking out this project. To get the list of commands, type <span class="rc-color">man</span>. Thank you for checking out this project. To get the list of commands, type <span class="rc-color fst-italic">Enter</span>. You can also press <span class="rc-color fst-italic">Tab</span> autocomplete a command.</p>
         </div>
       </div>
       <TerminalWindow />
