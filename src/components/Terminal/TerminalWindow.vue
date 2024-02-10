@@ -1,0 +1,189 @@
+<template>
+  <div v-for="message in resultMessage" :key="message" class="result-message mb-2">
+    <div v-if="Array.isArray(message[1])" class="result-message mb-2">
+      <p class="text-secondary mb-2 d-flex align-items-center gap-3">
+        Mickael ~$
+        <span class="text-white">{{ message[0] }} </span>
+      </p>
+      <ul>
+        <li v-for="command in message[1]" :key="command.name" class="fw-bold">
+          <div v-if="command.name">
+            <span class="rc-color">
+              {{ command.name }}
+            </span>
+            : {{ command.description }}
+          </div>
+          <span v-else class="fst-italic ">
+            {{ command.description }}
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div v-else class="result-message">
+      <p class="text-secondary mb-2 d-flex align-items-center gap-3">
+        Mickael ~$
+        <span class="text-white">{{ message[0] }}</span>
+      </p>
+      <div>
+        <div v-if="typeof message[1] === 'string' && isJSON(message[1])">
+          <pre>{{ message[1] }}</pre>
+        </div>
+        <div v-else>
+          {{ message[1] }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-command d-flex align-items-center gap-3">
+    <p class="text-secondary m-0">Mickael ~$</p>
+    <input type="text" v-model="userInput" ref="commandInput" @keydown.enter.prevent="handleEnter" @keydown.tab.prevent="handleTab">
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'TerminalWindow',
+
+  data() {
+    return {
+      userInput: '',
+      resultMessage: [],
+      manCommand: [
+        { name: 'clear', description: '"Delete all displayed content' },
+        { name: 'mickael', description: "Display the main information about Mickael"},
+        { name: 'stack', description: "List Mickael's technical skills" },
+        { name: 'cv', description: 'Download Mickael\'s CV' },
+        { name: 'why', description: 'Display why you have to hire Mickael' },
+        { name: 'email', description: 'If you liked this initiative, let me know by sending an email 😊' },
+      ],
+      stackCommand: [
+        { name: 'Backend', description: "Ruby on Rails, Node.js, actually learning C#." },
+        { name: 'Frontend', description: 'HTML, CSS, React, Vue.js, Bootstrap, Tailwind.' },
+        { name: 'Database', description: "MySQL, PostgreSQL, MongoDB." },
+      ],
+      mickaelCommand: '{"first_name":"Mickael","last_name":"Riss","age":25,"email":"mickaelriss6@gmail.com","website":"www.mickael-riss.com","job":"Software Developer","city":"Montréal"}',
+      whyCommand: `
+      {
+        "Raisons_de_recruter_Mickael": [
+          {
+            "Compétences_techniques": [
+              "Maîtrise des technologies web modernes, dont JavaScript, React, et Node.js.",
+              "Expérience solide dans le développement frontend (HTML, CSS) et backend (Node.js, Ruby on Rails).",
+              "Connaissance approfondie des bases de données SQL (MySQL, PostgreSQL) et NoSQL (MongoDB).",
+              "Familiarité avec les frameworks populaires tels que Vue.js, Bootstrap, et Tailwind."
+            ]
+          },
+          {
+            "Adaptabilité_et_travail_en_équipe": [
+              "Excellentes habiletés de communication à l'oral et à l'écrit.",
+              "Maîtrise du français et de l'anglais, répondant ainsi aux exigences des deux langues officielles du Canada.",
+              "Aptitude démontrée pour le travail en équipe.",
+              "Bon esprit d'analyse et capacité à intégrer rapidement de nouveaux concepts, tout en respectant des délais restreints."
+            ]
+          },
+          {
+            "Veille_technologique_et_engagement_professionnel": [
+              "Aptitude à se tenir à jour avec les plus récents développements technologiques.",
+              "Capacité à suivre les tendances et les nouvelles approches en matière de développement et d'architecture.",
+              "Engagement professionnel en respectant les engagements vis-à-vis des exigences de projet et de support."
+            ]
+          }
+        ]
+      }`,
+      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'email'],
+    };
+  },
+
+  methods: {
+    handleDocumentClick(event) {
+      if (this.$refs.commandInput && !this.$refs.commandInput.contains(event.target)) {
+        this.$refs.commandInput.focus();
+      }
+    },
+
+    isJSON(str) {
+      try {
+        JSON.parse(str);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    },
+
+    downloadCV() {
+      const link = document.createElement('a');
+      link.href = '/CV_Mickael_Riss.pdf';
+      link.download = 'CV_Mickaël_Riss.pdf';
+      link.click();
+    },
+
+    sendEmail() {
+      const link = document.createElement('a');
+      link.href = 'mailto:mickaelriss6@gmail';
+      link.click();
+    },
+
+    handleEnter() {
+      const command = this.userInput.toLowerCase();
+      const mickaelJson = JSON.stringify(JSON.parse(this.mickaelCommand), null, 2);
+      const whyJson = JSON.stringify(JSON.parse(this.whyCommand), null, 2);
+
+      switch (command) {
+        case 'mickael':
+          this.resultMessage.push(['mickael', mickaelJson]);
+          break;
+        case 'stack':
+          this.resultMessage.push(['stack', this.stackCommand]);
+          break;
+        case 'cv':
+          this.downloadCV();
+          this.resultMessage.push(['cv', 'Downloading CV... Done!']);
+          break;
+        case 'why':
+          this.resultMessage.push(['why', whyJson]);
+          break;
+        case 'clear':
+          this.resultMessage = [];
+          break;
+        case 'man':
+          this.resultMessage.push(['man', this.manCommand]);
+          break;
+        case 'email':
+          this.sendEmail();
+          this.resultMessage.push(['email', 'Thanks for sending an email! I\'ll get back to you as soon as possible.']);
+          break;
+        default:
+          this.resultMessage.push([this.userInput]);
+          break;
+      }
+
+      this.userInput = '';
+    },
+
+    handleTab(event) {
+      event.preventDefault();
+      const userInputLowerCase = this.userInput.toLowerCase();
+      const matchingCommands = this.availableCommands.filter(command => command.startsWith(userInputLowerCase));
+
+      if (matchingCommands.length === 1) {
+        this.userInput = matchingCommands[0];
+      }
+    },
+  },
+
+  mounted() {
+    this.$refs.commandInput.focus();
+    document.addEventListener('click', this.handleDocumentClick);
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+  input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+  }
+</style>

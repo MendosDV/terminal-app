@@ -9,7 +9,7 @@ import TerminalApp from './components/Terminal/TerminalView.vue'
 
 export default {
   name: 'App',
-  components: { TerminalApp }
+  components: { TerminalApp },
 }
 </script>
 
@@ -20,7 +20,19 @@ export default {
     font-family: Ubuntu Mono,monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(26,26,105,1) 35%, rgba(0,212,255,1) 100%);
+    background: hsla(120, 6%, 90%, 1);
+    background: linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+  }
+
+  .rc-color {
+    color: #DD0700;
+  }
+
+  @media (max-width: 768px) {
+    p, li, input, span, pre, div {
+      font-size: 0.8rem !important;
+    };
   }
 </style>
