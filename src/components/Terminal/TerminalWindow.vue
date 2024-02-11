@@ -50,11 +50,11 @@ export default {
       userInput: '',
       resultMessage: [],
       manCommand: [
-        { name: 'clear', description: '"Delete all displayed content' },
-        { name: 'mickael', description: "Display the main information about Mickael"},
-        { name: 'stack', description: "List Mickael's technical skills" },
-        { name: 'cv', description: 'Download Mickael\'s CV' },
-        { name: 'why', description: 'Display why you have to hire Mickael' },
+        { name: 'clear', description: 'Delete all displayed content' },
+        { name: 'mickael', description: "Display the main information about me"},
+        { name: 'stack', description: "List my technical skills" },
+        { name: 'cv', description: 'Download my CV' },
+        { name: 'why', description: 'Display why you should hire me' },
         { name: 'email', description: 'If you liked this initiative, let me know by sending an email 😊' },
       ],
       stackCommand: [
@@ -65,32 +65,27 @@ export default {
       mickaelCommand: '{"first_name":"Mickael","last_name":"Riss","age":25,"email":"mickaelriss6@gmail.com","website":"www.mickael-riss.com","job":"Software Developer","city":"Montréal"}',
       whyCommand: `
       {
-        "Raisons_de_recruter_Mickael": [
+        "Reasons_to_Hire_Mickael": [
           {
-            "Compétences_techniques": [
-              "Maîtrise des technologies web modernes, dont JavaScript, React, et Node.js.",
-              "Expérience solide dans le développement frontend (HTML, CSS) et backend (Node.js, Ruby on Rails).",
-              "Connaissance approfondie des bases de données SQL (MySQL, PostgreSQL) et NoSQL (MongoDB).",
-              "Familiarité avec les frameworks populaires tels que Vue.js, Bootstrap, et Tailwind."
+            "Technical_Skills": [
+              "Proficient in modern web technologies, including JavaScript, React, and Node.js.",
+              "Solid experience in frontend development (HTML, CSS) and backend (Node.js, Ruby on Rails).",
+              "In-depth knowledge of SQL databases (MySQL, PostgreSQL) and NoSQL (MongoDB).",
+              "Familiarity with popular frameworks such as Vue.js, Bootstrap, and Tailwind."
             ]
           },
           {
-            "Adaptabilité_et_travail_en_équipe": [
-              "Excellentes habiletés de communication à l'oral et à l'écrit.",
-              "Maîtrise du français et de l'anglais, répondant ainsi aux exigences des deux langues officielles du Canada.",
-              "Aptitude démontrée pour le travail en équipe.",
-              "Bon esprit d'analyse et capacité à intégrer rapidement de nouveaux concepts, tout en respectant des délais restreints."
-            ]
-          },
-          {
-            "Veille_technologique_et_engagement_professionnel": [
-              "Aptitude à se tenir à jour avec les plus récents développements technologiques.",
-              "Capacité à suivre les tendances et les nouvelles approches en matière de développement et d'architecture.",
-              "Engagement professionnel en respectant les engagements vis-à-vis des exigences de projet et de support."
+            "Soft_Skills": [
+              "Proactive and enjoys taking initiatives, completing tasks independently, and meeting deadlines.",
+              "Effective communication skills, both verbally and in writing, with the ability to collaborate well in a team.",
+              "Constant curiosity fuels a passion for discovering new things and tackling challenges as a self-learner, always ready to learn and expand skills.",
+              "Fluent in French (native language) with advanced proficiency in English.",
+              "Thrives in a positive work environment and looks forward to bringing a cheerful spirit to your team! 😊"
             ]
           }
         ]
-      }`,
+      }
+      `,
       availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'email'],
     };
   },
