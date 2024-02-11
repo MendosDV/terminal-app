@@ -49,6 +49,8 @@ export default {
     return {
       userInput: '',
       resultMessage: [],
+      linkedin: 'https://www.linkedin.com/in/mickael-riss/',
+      github: 'https://github.com/MendosDV',
       manCommand: [
         { name: 'clear', description: 'Delete all displayed content' },
         { name: 'mickael', description: "Display the main information about me"},
@@ -56,6 +58,8 @@ export default {
         { name: 'cv', description: 'Download my CV' },
         { name: 'why', description: 'Display why you should hire me' },
         { name: 'email', description: 'If you liked this initiative, let me know by sending an email 😊' },
+        { name: 'linkedin', description: 'Connect with me on LinkedIn' },
+        { name: 'github', description: 'Check my GitHub profile for more projects' },
       ],
       stackCommand: [
         { name: 'Backend', description: "Ruby on Rails, Node.js, actually learning C#." },
@@ -86,7 +90,7 @@ export default {
         ]
       }
       `,
-      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'email'],
+      availableCommands: ['mickael', 'stack', 'cv', 'why', 'clear', 'coucou', 'man', 'email', 'linkedin', 'github'],
     };
   },
 
@@ -113,6 +117,13 @@ export default {
       link.click();
     },
 
+    visitSocial(social) {
+      const link = document.createElement('a');
+      link.href = social;
+      link.target = '_blank';
+      link.click();
+    },
+
     sendEmail() {
       const link = document.createElement('a');
       link.href = 'mailto:mickaelriss6@gmail';
@@ -131,6 +142,9 @@ export default {
         case 'stack':
           this.resultMessage.push(['stack', this.stackCommand]);
           break;
+        case 'social':
+          this.resultMessage.push(['social', this.socialCommand]);
+          break;
         case 'cv':
           this.downloadCV();
           this.resultMessage.push(['cv', 'Downloading CV... Done!']);
@@ -148,8 +162,16 @@ export default {
           this.sendEmail();
           this.resultMessage.push(['email', 'Thanks for sending an email! I\'ll get back to you as soon as possible.']);
           break;
+        case 'linkedin':
+          this.visitSocial(this.linkedin);
+          this.resultMessage.push(['linkedin', 'Visit my LinkedIn profile and let\'s connect!']);
+          break;
+        case 'github':
+          this.visitSocial(this.github);
+          this.resultMessage.push(['Github', 'Go check my GitHub profile and see what I\'ve done!']);
+          break;
         default:
-          this.resultMessage.push([this.userInput]);
+          this.resultMessage.push([this.userInput, `Command not found: '${this.userInput}'. You can type 'man' to get the list of commands.`]);
           break;
       }
 

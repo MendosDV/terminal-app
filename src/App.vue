@@ -14,20 +14,37 @@ export default {
 </script>
 
 <style lang="scss">
+  body {
+    overflow: hidden;
+  }
+
+  $rc-color: #5EC2B7;
+
+  .rc-color {
+    color: $rc-color;
+  }
+
   #app {
     height: 100vh;
     width: 100vw;
     font-family: Ubuntu Mono,monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: hsla(120, 6%, 90%, 1);
-    background: linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(120, 6%, 90%, 1) 0%, hsla(228, 75%, 16%, 1) 100%);
+    background: linear-gradient(to right, #211f20, #292d34, #213030);
   }
 
-  .rc-color {
-    color: #DD0700;
+  ::-webkit-scrollbar {
+      height: 4px;
+      width:  8px;
+    }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #5EC2B7;
+    border-radius: 10px;
   }
 
   @media (max-width: 768px) {

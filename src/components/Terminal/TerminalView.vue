@@ -8,7 +8,7 @@
     </div>
     <div class="terminal-body px-2 px-md-4">
       <div class="text-presentation">
-        <pre id="ascii" role="img" aria-label="ASCII Radio Canada" class="mb-2 rc-color">
+        <pre id="ascii" role="img" aria-label="ASCII Radio Canada" class="mb-4 mb-md-2 ascii-text">
 __        __   _                             ____           _ _          ____                      _
 \ \      / /__| | ___ ___  _ __ ___   ___   |  _ \ __ _  __| (_) ___    / ___|__ _ _ __   __ _  __| | __ _
  \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \  | |_) / _` |/ _` | |/ _ \  | |   / _` | '_ \ / _` |/ _` |/ _` |
@@ -50,7 +50,7 @@ export default {
   height: 68%;
   background-color: #040405d4;
   opacity: 0.9;
-
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   .terminal-header {
     background-color: #575151;
     width: 100%;
@@ -75,24 +75,39 @@ export default {
     height: 92%;
     overflow-y: scroll;
 
-    pre {
-      display: block;
-      font-family: monospace;
-      white-space: pre;
+    ::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #5EC2B7;
+      border-radius: 10px;
+    }
+
+    .ascii-text {
+      font-size: 6px !important;
+      text-align: left;
+
+      @media screen and (min-width: 768px) {
+        font-size: 10px !important;
+      }
+
+      @media screen and (min-width: 1024px) {
+        font-size: 12px !important;
+      }
     }
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (min-width: 0px) {
     width: 100%;
 
     span {
       width: 10px;
       height: 10px;
-    }
-
-    pre {
-      font-size: 4px;
-      text-align: left;
     }
   }
 
@@ -103,10 +118,6 @@ export default {
       width: 10px;
       height: 10px;
     }
-
-    pre {
-      font-size: 10px;
-    }
   }
 
   @media screen and (min-width: 1024px) {
@@ -115,10 +126,6 @@ export default {
     span {
       width: 14px;
       height: 14px;
-    }
-
-    pre {
-      font-size: 10px;
     }
   }
 }
