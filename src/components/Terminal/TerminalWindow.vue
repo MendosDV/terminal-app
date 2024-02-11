@@ -132,7 +132,7 @@ export default {
     },
 
     handleEnter() {
-      const command = this.userInput.toLowerCase();
+      const command = this.userInput.toLowerCase().trim();
       const mickaelJson = JSON.stringify(JSON.parse(this.mickaelCommand), null, 2);
       const whyJson = JSON.stringify(JSON.parse(this.whyCommand), null, 2);
 
