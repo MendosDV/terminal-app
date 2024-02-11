@@ -16,6 +16,7 @@ export default {
 <style lang="scss">
   body {
     overflow: hidden;
+    background: linear-gradient(to right, #211f20, #292d34, #213030);
   }
 
   $rc-color: #5EC2B7;

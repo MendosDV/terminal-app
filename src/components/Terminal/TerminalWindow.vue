@@ -113,6 +113,7 @@ export default {
     downloadCV() {
       const link = document.createElement('a');
       link.href = '/CV_Mickael_Riss.pdf';
+      link.target = '_blank';
       link.download = 'CV_Mickaël_Riss.pdf';
       link.click();
     },
