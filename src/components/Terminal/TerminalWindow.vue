@@ -2,7 +2,7 @@
   <div v-for="message in resultMessage" :key="message" class="result-message mb-2">
     <div v-if="Array.isArray(message[1])" class="result-message mb-2">
       <p class="text-secondary mb-2 d-flex align-items-center gap-3">
-        Mickael ~$
+        Mickael 🤖 ~$
         <span class="text-white">{{ message[0] }} </span>
       </p>
       <ul>
@@ -21,7 +21,7 @@
     </div>
     <div v-else class="result-message">
       <p class="text-secondary mb-2 d-flex align-items-center gap-3">
-        Mickael ~$
+        Mickael 🤖 ~$
         <span class="text-white">{{ message[0] }}</span>
       </p>
       <div>
@@ -36,7 +36,7 @@
   </div>
 
   <div class="text-command d-flex align-items-center gap-3">
-    <p class="text-secondary m-0">Mickael ~$</p>
+    <p class="text-secondary m-0">Mickael 🤖 ~$</p>
     <input type="text" v-model="userInput" ref="commandInput" @keydown.enter.prevent="handleEnter" @keydown.tab.prevent="handleTab">
   </div>
 </template>

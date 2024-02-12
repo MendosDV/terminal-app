@@ -8,12 +8,12 @@
     </div>
     <div class="terminal-body px-2 px-md-4">
       <div class="text-presentation">
-        <pre id="ascii" role="img" aria-label="ASCII Radio Canada" class="mb-4 mb-md-2 ascii-text">
-__        __   _                             ____           _ _          ____                      _
-\ \      / /__| | ___ ___  _ __ ___   ___   |  _ \ __ _  __| (_) ___    / ___|__ _ _ __   __ _  __| | __ _
- \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \  | |_) / _` |/ _` | |/ _ \  | |   / _` | '_ \ / _` |/ _` |/ _` |
-  \ V  V /  __/ | (_| (_) | | | | | |  __/  |  _   (_| | (_| | | (_) | | |__| (_| | | | | (_| | (_| | (_| |
-   \_/\_/ \___|_|\___\___/|_| |_| |_|\___|  |_| \_\__,_|\__,_|_|\___/   \____\__,_|_| |_|\__,_|\__,_|\__,_|
+        <pre id="ascii" role="img" aria-label="ASCII" class="mb-4 mb-md-2 ascii-text">
+__        __   _                                                      _ _                  _
+\ \      / /__| | ___ ___  _ __ ___   ___    _ __ ___  ___ _ __ _   _(_) |_ ___ _ __ ___  | |
+ \ \ /\ / / _ \ |/ __/ _ \| '_ ` _ \ / _ \  | '__/ _ \/ __| '__| | | | | __/ _ \ '__/ __| | |
+  \ V  V /  __/ | (_| (_) | | | | | |  __/  | | |  __/ (__| |  | |_| | | ||  __/ |  \__ \ |_|
+   \_/\_/ \___|_|\___\___/|_| |_| |_|\___|  |_|  \___|\___|_|   \__,_|_|\__\___|_|  |___/ (_)
         </pre>
         <div>
           <p class="fw-bold">Thank you for checking out this project. To get the list of commands, type <span class="rc-color">man</span>. To execute a command, type <span class="rc-color fst-italic">Enter</span>. You can also press <span class="rc-color fst-italic">Tab</span> to autocomplete a command.</p>
