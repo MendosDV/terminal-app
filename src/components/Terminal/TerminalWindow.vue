@@ -62,7 +62,7 @@ export default {
         { name: 'github', description: 'Check my GitHub profile for more projects' },
       ],
       stackCommand: [
-        { name: 'Backend', description: "Ruby on Rails, Node.js, actually learning C#." },
+        { name: 'Backend', description: "Ruby on Rails, Node.js, actually learning Python." },
         { name: 'Frontend', description: 'HTML, CSS, React, Vue.js, Bootstrap, Tailwind.' },
         { name: 'Database', description: "MySQL, PostgreSQL, MongoDB." },
       ],
